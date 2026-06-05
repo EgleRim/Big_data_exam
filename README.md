@@ -55,7 +55,7 @@ The pipeline accepts multiple CSV files in the `ais-collision-detector/data/` fo
 
 ## Build & Run
 
-### Option A — Docker Compose (recommended)
+### Docker Compose
 
 ```bash
 # 1. Clone the repo
@@ -71,32 +71,6 @@ docker compose build
 docker compose up
 
 # Results appear in output/
-```
-
-### Option B — Plain Docker
-
-```bash
-# Build
-docker build -t ais-collision-detector .
-
-# Run (mount your local AIS data and output folders)
-docker run --rm \
-  -v "$(pwd)/ais-collision-detector/data:/data:ro" \
-  -v "$(pwd)/output:/output" \
-  --memory="6g" \
-  ais-collision-detector
-```
-
-### Option C — Docker Hub (pre-built image)
-
-```bash
-docker pull <your-dockerhub-username>/ais-collision-detector:latest
-
-docker run --rm \
-  -v "$(pwd)/ais-collision-detector/data:/data:ro" \
-  -v "$(pwd)/output:/output" \
-  --memory="6g" \
-  <your-dockerhub-username>/ais-collision-detector:latest
 ```
 
 ---
