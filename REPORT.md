@@ -118,17 +118,19 @@ The trajectories are extracted for each vessel in a **±10-minute window** aroun
 
 ## 9. Findings
 
-*(Fill this section in after running the pipeline with your data.)*
-
 ```
-Vessel A MMSI : ___________
-Vessel A Name : ___________
-Vessel B MMSI : ___________
-Vessel B Name : ___________
-Timestamp     : 2021-12-XX HH:MM:SS UTC
-Latitude      : XX.XXXXXX
-Longitude     : XX.XXXXXX
-Distance      : X.XXXX nm (XXX m)
+AIS COLLISION DETECTION RESULTS
+=================================================
+
+Vessel A MMSI : 219021240
+Vessel A Name : KARIN HOEJ
+
+Vessel B MMSI : 232018267
+Vessel B Name : MV SCOT CARRIER
+
+Timestamp     : 2021-12-13 02:27:29
+Latitude      : 55.223067
+Longitude     : 14.243730
 ```
 
 The trajectory map (`output/collision_map.html`) shows the approach paths of both vessels converging at the collision point and diverging (or stopping) afterwards.
