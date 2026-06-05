@@ -59,7 +59,7 @@ The pipeline accepts multiple CSV files in the `ais-collision-detector/data/` fo
 
 ```bash
 # 1. Clone the repo
-git clone <your-repo-url>
+git clone https://github.com/EgleRim/Big_data_exam.git
 cd ais-collision-detector
 
 # 2. Place AIS CSV(s) in data/
@@ -114,13 +114,10 @@ Override at runtime: `docker run -e DATA_PATH=/custom/path ...`
 ## Performance Notes
 
 - **Geohash bucketing** replaces a full O(n²) Cartesian self-join with a bucketed join, reducing complexity to roughly O(n · k) where k is the average bucket density.
-- Downsampling to 1-minute resolution before the join further reduces row count by ~10–60×.
-- Spark adaptive query execution (`spark.sql.adaptive.enabled=true`) automatically coalesces shuffle partitions.
-- On a modern laptop with 8 GB RAM assigned to Docker, the full December 2021 dataset should complete in **10–30 minutes** depending on data volume.
 
 ---
 
-## Pushing to Docker Hub
+## Link to Docker Hub
 
 ```bash
 docker tag ais-collision-detector <your-username>/ais-collision-detector:latest
