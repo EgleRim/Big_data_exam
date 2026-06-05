@@ -120,6 +120,5 @@ Override at runtime: `docker run -e DATA_PATH=/custom/path ...`
 ## Link to Docker Hub
 
 ```bash
-docker tag ais-collision-detector <your-username>/ais-collision-detector:latest
-docker push <your-username>/ais-collision-detector:latest
+https://hub.docker.com/repository/docker/eglerim/ais-collision-detector/general
 ```
