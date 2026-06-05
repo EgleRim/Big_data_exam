@@ -1,6 +1,6 @@
 # AIS Vessel Collision Detector
 
-Identifies the two vessels with the closest physical proximity (collision event) from Danish AIS data for **December 2021**, within a **50 nautical mile radius** of `55.225°N, 14.245°E`. Outputs their MMSI numbers, vessel names, collision timestamp, coordinates, and a trajectory map.
+Identifies two vessels with closest physical proximity (collision event) from Danish AIS data for **December 2021**, within a **50 nautical mile radius** of `55.225°N, 14.245°E`. Outputs their MMSI numbers, vessel names, collision timestamp, coordinates, and a trajectory map.
 
 ---
 
