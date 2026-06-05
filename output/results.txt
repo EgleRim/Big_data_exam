@@ -1,5 +1,5 @@
 AIS COLLISION DETECTION RESULTS
-==================================================
+=================================================
 
 Vessel A MMSI : 219021240
 Vessel A Name : KARIN HOEJ
