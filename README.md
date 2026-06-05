@@ -41,7 +41,7 @@ Note: the repository root contains `ais-collision-detector/data/`, and Docker Co
 
 1. Go to **http://aisdata.ais.dk/**
 2. Download the Danish AIS data for **December 2021** (file name will be something like `aisdk-2021-12.csv`)
-3. Place the CSV file(s) inside the `ais-collision-detector/data/` folder in this repository
+3. Place the CSV file(s) inside the `ais-collision-detector/data/` folder
 
 ```
 ais-collision-detector/
