@@ -10,7 +10,7 @@ Pipeline overview:
   2. Clean & validate (type cast, null drop, timestamp parse)
   3. Filter by time window (Dec 2021) and geographic bounding box
   4. Remove stationary vessels (speed / positional variance filter)
-  5. Downsample to 1-minute resolution per vessel to limit join size
+  5. Downsample removing exact duplicate pings per vessel
   6. Spatial self-join using a geohash-bucket strategy (avoids full Cartesian)
   7. Compute Haversine distance for candidate pairs inside each bucket
   8. Pick the closest approach event; verify it is a genuine moving-pair event
@@ -37,7 +37,7 @@ import pandas as pd
 # Configuration
 # ---------------------------------------------------------------------------
 
-# Path where AIS CSV file(s) live inside the container
+# Path where AIS CSV file(s) are inside the container
 DATA_PATH = os.environ.get("DATA_PATH", "/data")
 
 # Output directory (map HTML + PNG will be written here)
@@ -66,7 +66,7 @@ log = logging.getLogger(__name__)
 
 
 # ---------------------------------------------------------------------------
-# Haversine expression  (Spark-native, avoids Python UDF overhead)
+# Haversine expression
 # ---------------------------------------------------------------------------
 
 def haversine_nm_expr(lat1, lon1, lat2, lon2):
@@ -123,7 +123,7 @@ def load_data(spark):
 # Step 2: Clean & normalise column names
 # ---------------------------------------------------------------------------
 
-# Danish AIS field name variants we handle
+# Danish AIS field name variants to handle
 _COL_MAP = {
     # lowercase name we use  →  possible raw column names (in priority order)
     "mmsi":      ["MMSI", "mmsi"],
@@ -203,8 +203,7 @@ def clean_data(df):
 
 def filter_patrol_vessels(df):
     """
-    Remove known rescue and government fleets by name, but keep all ship types
-    intact so specialized vessels like the Karin Høj aren't dropped.
+    Remove known rescue and government fleets by name.
     """
     log.info("Filtering rescue assets by explicit name keywords...")
 
@@ -234,7 +233,7 @@ def filter_aoi(df):
           .filter(F.col("lon").between(min_lon, max_lon))
     )
 
-    # Precise circular filter using Spark-native Haversine expression
+    # Precise circular filter using Haversine expression
     df = df.withColumn(
         "dist_to_centre",
         haversine_nm_expr(
@@ -282,7 +281,7 @@ def remove_noise_and_stationary(df):
 
 
 # ---------------------------------------------------------------------------
-# Step 5: Downsample to 1-minute resolution
+# Step 5: Downsample removing exact duplicate pings per vessel
 # ---------------------------------------------------------------------------
 def downsample(df):
     """
@@ -355,7 +354,7 @@ def find_collision(df_clean):
         F.col("b.ship_name").alias("name_b") if "ship_name" in df_clean.columns else F.lit(None).alias("name_b")
     )
 
-    # Compute Haversine distance using Spark native expressions
+    # Compute Haversine distance
     pairs = pairs.withColumn(
         "distance_nm",
         haversine_nm_expr("lat_a", "lon_a", "lat_b", "lon_b")
