@@ -1,0 +1,13 @@
+AIS COLLISION DETECTION RESULTS
+==================================================
+
+Vessel A MMSI : 219021240
+Vessel A Name : KARIN HOEJ
+
+Vessel B MMSI : 232018267
+Vessel B Name : MV SCOT CARRIER
+
+Timestamp     : 2021-12-13 02:27:29
+Latitude      : 55.223067
+Longitude     : 14.243730
+Distance      : 0.0403 nm (75 m)

@@ -1,0 +1,23 @@
+services:
+  ais-detector:
+    build: .
+    image: ais-collision-detector:latest
+    container_name: ais-collision-detector
+
+    # Mount your local AIS data folder and output folder into the container
+    volumes:
+      - ./ais-collision-detector/data:/data:ro   # read-only — your AIS CSV files go here
+      - ./output:/output                        # results + map will appear here
+
+    environment:
+      - DATA_PATH=/data
+      - OUTPUT_DIR=/output
+
+    # Increase shared memory for Spark — useful on Linux hosts
+    shm_size: "2gb"
+
+    # Resource limits (adjust to your machine)
+    deploy:
+      resources:
+        limits:
+          memory: 6g
