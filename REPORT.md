@@ -133,4 +133,4 @@ Latitude      : 55.223067
 Longitude     : 14.243730
 ```
 
-The trajectory map (`output/collision_map.html`) shows the approach paths of both vessels converging at the collision point and diverging (or stopping) afterwards.
+The trajectory map (`output/map.png`) shows the approach paths of both vessels converging at the collision point and diverging (or stopping) afterwards.
