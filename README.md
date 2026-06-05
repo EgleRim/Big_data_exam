@@ -26,7 +26,8 @@ No local Python or Java installation is needed — everything runs inside Docker
 ├── collision_detector.py       # Main PySpark pipeline
 ├── output/                     # ← Results appear here after run
 │   ├── collision_map.html      # Interactive trajectory map
-│   └── results.txt             # Collision summary (MMSI, name, time, coords)
+│   ├── results.txt             # Collision summary (MMSI, name, time, coords)
+│   └── map.png                 # Screenshot of collision map
 └── ais-collision-detector/
     └── data/                   # ← Put your AIS CSV files here
         └── aisdk-2021-12.csv
