@@ -4,9 +4,9 @@ services:
     image: ais-collision-detector:latest
     container_name: ais-collision-detector
 
-    # Mount your local AIS data folder and output folder into the container
+    # Mount local AIS data folder and output folder into the container
     volumes:
-      - ./ais-collision-detector/data:/data:ro   # read-only — your AIS CSV files go here
+      - ./ais-collision-detector/data:/data:ro   # read-only — AIS CSV files go here
       - ./output:/output                        # results + map will appear here
 
     environment:
