@@ -9,7 +9,6 @@ Identifies two vessels with closest physical proximity (collision event) from Da
 | Tool | Version | Install |
 |------|---------|---------|
 | Docker Desktop | ≥ 24 | https://docs.docker.com/get-docker/ |
-| Git | any | https://git-scm.com |
 
 No local Python or Java installation is needed — everything runs inside Docker.
 
