@@ -39,7 +39,7 @@ The pipeline also filters out known rescue and patrol vessels by checking vessel
 
 ## 4. Spatial & Temporal Filtering
 
-A bounding box derived from the 50 nm radius is applied first (cheap, no UDF), then a precise Spark-native Haversine expression filters out corner pixels of the bounding box. This two-stage approach avoids calling the costly distance expression on the entire dataset.
+A bounding box derived from the 50 nm radius is applied first, then a Haversine expression filters out corner pixels of the bounding box. This two-stage approach avoids calling the costly distance expression on the entire dataset.
 
 The Haversine formula was chosen over simple Euclidean distance because longitude degrees shrink as latitude increases (~0.57× at 55°N), making Euclidean distance unreliable for anything beyond a few km.
 
